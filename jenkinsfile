@@ -2,7 +2,7 @@ node
 {
      stage('GitSCM')
     {
-        git url: 'https://github.com/selvan123/petclinic.git'
+        git url: 'https://github.com/DevOps0110/petclinic.git'
     }
     
      stage('Initialize')
@@ -52,7 +52,7 @@ node
 	
 	stage('Publish to Nexus')
     {
-        sh 'mvn deploy:deploy-file -DgroupId=com.cicd -DartifactId=petclinic -Dversion=${BUILD_NUMBER} -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus-snapshots -Durl=http://10.0.2.18:8081/nexus/content/repositories/petclinic/  -Dfile=/root/.jenkins/workspace/Petclinic/target/petclinic.war'
+        sh 'mvn deploy:deploy-file -DgroupId=com.cicd -DartifactId=petclinic -Dversion=${BUILD_NUMBER} -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus-snapshots -Durl=http://10.0.1.5:8081/nexus/content/repositories/petclinic/  -Dfile=/root/.jenkins/workspace/Petclinic/target/petclinic.war'
     }
     
       stage("Deploy to Rundeck")
@@ -69,7 +69,7 @@ node
 	
 	stage('Selenium Testing')
     {
-        git url: 'https://github.com/selvan123/petclinic.git'
+        git url: 'https://github.com/DevOps0110/petclinic.git'
         sh "cd /root/.jenkins/workspace/Petclinic/TestCases"
         wrap([$class: 'Xvfb', displayNameOffset: 0, installationName: 'Xvfb', screen: '1600x1200x32']) 
         {
