@@ -87,7 +87,7 @@ node
 		sh "rm -rf /root/.jenkins/workspace/Petclinic/Petclinic.jtl"
 		sh "rm -rf /root/.jenkins/workspace/Petclinic/Petclinic.xml"
 		sh "wget https://labassets.s3-us-west-2.amazonaws.com/AZURE/ARMTemplate/Petclinic.jmx"
-		sh "sudo /home/ec2-user/jMeter/apache-jmeter-5.1.1/bin/jmeter.sh -Jjmeter.save.saveservice.output_format=xml -n -t /root/.jenkins/workspace/Petclinic/Petclinic.jmx -l Petclinic.jtl"
+		sh "sudo /home/devopsadmin/jMeter/apache-jmeter-5.1.1/bin/jmeter.sh -Jjmeter.save.saveservice.output_format=xml -n -t /root/.jenkins/workspace/Petclinic/Petclinic.jmx -l Petclinic.jtl"
         
     }
 	
