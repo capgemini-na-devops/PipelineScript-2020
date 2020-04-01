@@ -60,7 +60,7 @@ node
 	    deploy adapters: [tomcat8(credentialsId: '6eebc703-7da3-4e73-94ff-347e97bf9f7b', path: '', url: 'http://10.0.1.228:8080/')], contextPath: 'petclinic', war: '**/*.war'	
     }	
 	
-/*	stage('Selenium Testing')
+	stage('Selenium Testing')
     {
         git url: 'https://github.com/DevOps0110/petclinic.git'
         sh "cd /root/.jenkins/workspace/Petclinic/TestCases"
@@ -92,6 +92,6 @@ node
         sh "sudo docker run -t owasp/zap2docker-weekly zap-baseline.py -t \$(head -n 1 PetclinicUrl.txt) || true"
         
     }  
-    */
+    
 }
 
