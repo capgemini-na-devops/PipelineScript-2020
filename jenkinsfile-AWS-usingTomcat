@@ -57,9 +57,6 @@ node
     
         stage('Deploy to Tomcat')	
     {	
-    	    ssh -v -i Prathamesh_Oregon.pem -l ec2-user 10.0.1.228
-            PUBLIC_IP=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
-            echo $PUBLIC_IP
 	    deploy adapters: [tomcat8(credentialsId: '6eebc703-7da3-4e73-94ff-347e97bf9f7b', path: '', url: 'http://10.0.1.228:8080/')], contextPath: 'petclinic', war: '**/*.war'	
     }	
 	
