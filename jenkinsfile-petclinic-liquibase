@@ -32,7 +32,7 @@ node
 		withSonarQubeEnv('sonar') 
 		{
 		    def mvn = tool 'mvn'
-			sh 'mvn clean wro4j:run package sonar:sonar'
+			sh 'mvn clean wro4j:run package liquibase:update sonar:sonar'
 			sh 'sleep 10'
 		} // SonarQube taskId is automatically attached to the pipeline context
 	}
