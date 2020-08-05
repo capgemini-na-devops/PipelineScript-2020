@@ -17,14 +17,15 @@ node
      stage('Build Stage')
     {
         echo "Maven installation path is: ${M2_HOME}"
-        sh "${M2_HOME}\\mvn -B verify"
+        // sh "${M2_HOME}\\mvn -B verify"
+        sh "mvn clean package"
     }
 
       stage('Sonar Analysis')
     {
         withSonarQubeEnv('sonar')
         {
-            sh 'mvn clean package sonar:sonar'
+            sh 'mvn sonar:sonar'
             sh 'sleep 10'
         }
     }
