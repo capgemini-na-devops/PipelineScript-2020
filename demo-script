@@ -10,13 +10,12 @@ node
 
         // jdk = tool name: 'jdk'
         // env.JAVA_HOME = "${jdk}"
-        echo "jdk installation path is: ${JAVA_HOME}"
-        sh "${JAVA_HOME}/bin/java -version"
+        echo "JDK installation path is: ${JAVA_HOME}"
+        // sh "${JAVA_HOME}/bin/java -version"
     }
 
      stage('Build Stage')
     {
-        def mvnHome = tool 'mvn'
         echo "Maven installation path is: ${M2_HOME}"
         sh "${M2_HOME}/bin/mvn -B verify"
     }
