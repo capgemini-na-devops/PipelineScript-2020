@@ -17,22 +17,12 @@ node
      stage('Build Stage')
     {
         echo "Maven installation path is: ${M2_HOME}"
-        // sh "${M2_HOME}\\mvn -B verify"
-        sh "pwd"
+        sh "${M2_HOME}/mvn -B verify"
         sh "mvn clean package"
-    }
-
-      stage('Sonar Analysis')
-    {
-        withSonarQubeEnv('sonar')
-        {
-            sh 'mvn sonar:sonar'
-            sh 'sleep 10'
-        }
     }
 
     stage('Publish to Nexus')
     {
-        sh 'mvn deploy:deploy-file -DgroupId=com.cicd -DartifactId=petclinic -Dversion=${BUILD_NUMBER} -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus-snapshots -Durl=http://54.202.213.82:8081/nexus/content/repositories/petclinic/  -Dfile=/root/.jenkins/workspace/Petclinic/target/petclinic.war'
+        sh 'mvn deploy:deploy-file -DgroupId=com.cicd -DartifactId=petclinic -Dversion=1 -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus-snapshots -Durl=http://54.202.213.82:8081/nexus/content/repositories/petclinic-liquibase/  -Dfile=C:/Users/prapai/spring-petclinic.war'
     }
 }
