@@ -18,6 +18,7 @@ node
     {
         echo "Maven installation path is: ${M2_HOME}"
         // sh "${M2_HOME}\\mvn -B verify"
+        sh "pwd"
         sh "mvn clean package"
     }
 
