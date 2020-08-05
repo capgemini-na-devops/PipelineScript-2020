@@ -9,10 +9,9 @@ node
     {
 
         // jdk = tool name: 'jdk'
-        env.JAVA_HOME = "${jdk}"
-        echo "jdk installation path is: ${jdk}"
-        sh "${jdk}/bin/java -version"
-        sh '$JAVA_HOME/bin/java -version'
+        // env.JAVA_HOME = "${jdk}"
+        echo "jdk installation path is: ${JAVA_HOME}"
+        sh "$JAVA_HOME/bin/java -version"
     }
 
      stage('Build Stage')
