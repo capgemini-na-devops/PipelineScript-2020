@@ -17,12 +17,12 @@ node
      stage('Build Stage')
     {
         echo "Maven installation path is: ${M2_HOME}"
-        sh "C:/Users/prapai/DevOps-Demo/apache-maven-3.6.3/bin/mvn -B verify"
-        sh "C:/Users/prapai/DevOps-Demo/apache-maven-3.6.3/bin/mvn clean package"
+        // sh "C:/Users/prapai/DevOps-Demo/apache-maven-3.6.3/bin/mvn -B verify"
+        // sh "C:/Users/prapai/DevOps-Demo/apache-maven-3.6.3/bin/mvn clean package"
     }
 
     stage('Publish to Nexus')
     {
-        sh 'mvn deploy:deploy-file -DgroupId=com.cicd -DartifactId=petclinic -Dversion=1 -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus-snapshots -Durl=http://54.202.213.82:8081/nexus/content/repositories/petclinic-liquibase/  -Dfile=C:/Users/prapai/spring-petclinic.war'
+        sh 'mvn deploy:deploy-file -DgroupId=com.cicd -DartifactId=petclinic -Dversion=1 -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus-snapshots -Durl=http://admin:admin123@54.202.213.82:8081/nexus/content/repositories/petclinic/  -Dfile="C:/Users/prapai/OneDrive - Capgemini/Desktop/petclinic.war"'
     }
 }
