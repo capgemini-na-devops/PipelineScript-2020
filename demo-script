@@ -1,0 +1,38 @@
+node
+{
+     stage('GitSCM')
+    {
+        git url: 'https://github.com/DevOps0110/petclinic.git'
+    }
+
+     stage('Initialize')
+    {
+
+        jdk = tool name: 'jdk'
+        env.JAVA_HOME = "${jdk}"
+        echo "jdk installation path is: ${jdk}"
+        sh "${jdk}/bin/java -version"
+        sh '$JAVA_HOME/bin/java -version'
+    }
+
+     stage('Build Stage')
+    {
+        def mvnHome = tool 'mvn'
+        sh "${mvnHome}/bin/mvn -B verify"
+    }
+
+      stage('Sonar Analysis')
+    {
+        withSonarQubeEnv('sonar')
+        {
+            def mvn = tool 'mvn'
+            sh 'mvn clean package sonar:sonar'
+            sh 'sleep 10'
+        } // SonarQube taskId is automatically attached to the pipeline context
+    }
+
+    stage('Publish to Nexus')
+    {
+        sh 'mvn deploy:deploy-file -DgroupId=com.cicd -DartifactId=petclinic -Dversion=${BUILD_NUMBER} -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus-snapshots -Durl=http://54.202.213.82:8081/nexus/content/repositories/petclinic/  -Dfile=/root/.jenkins/workspace/Petclinic/target/petclinic.war'
+    }
+}
