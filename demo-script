@@ -17,8 +17,8 @@ node
      stage('Build Stage')
     {
         echo "Maven installation path is: ${M2_HOME}"
-        sh "${M2_HOME}/mvn -B verify"
-        sh "mvn clean package"
+        sh "C:/Users/prapai/DevOps-Demo/apache-maven-3.6.3/bin/mvn -B verify"
+        sh "C:/Users/prapai/DevOps-Demo/apache-maven-3.6.3/bin/mvn clean package"
     }
 
     stage('Publish to Nexus')
