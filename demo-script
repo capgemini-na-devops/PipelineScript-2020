@@ -17,7 +17,7 @@ node
      stage('Build Stage')
     {
         echo "Maven installation path is: ${M2_HOME}"
-        sh "${M2_HOME}/bin/mvn -B verify"
+        sh "${M2_HOME}\\mvn -B verify"
     }
 
       stage('Sonar Analysis')
