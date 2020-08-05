@@ -24,8 +24,7 @@ node
     stage('Publish to Nexus')
     {
         withMaven(
-             maven: 'maven-3',
-             mavenSettingsConfig: 'my-maven-settings'
+             maven: 'maven-3'
         ) {
             sh 'mvn deploy:deploy-file -DgroupId=com.cicd -DartifactId=petclinic -Dversion=1 -DgeneratePom=true -Dpackaging=war -DrepositoryId=nexus-snapshots -Durl=http://admin:admin123@54.202.213.82:8081/nexus/content/repositories/petclinic/  -Dfile="C:/Users/prapai/OneDrive - Capgemini/Desktop/petclinic.war"'
         }   
