@@ -8,7 +8,7 @@ node
      stage('Initialize')
     {
 
-        jdk = tool name: 'jdk'
+        // jdk = tool name: 'jdk'
         env.JAVA_HOME = "${jdk}"
         echo "jdk installation path is: ${jdk}"
         sh "${jdk}/bin/java -version"
